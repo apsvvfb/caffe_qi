@@ -1,0 +1,279 @@
+CXX src/caffe/test/test_lstm_layer.cpp
+CXX src/caffe/test/test_rnn_layer.cpp
+CXX src/caffe/layers/recurrent_layer.cpp
+LD -o .build_debug/lib/libcaffe.so
+CXX/LD -o .build_debug/test/test_all.testbin src/caffe/test/test_caffe_main.cpp
+.build_debug/tools/caffe
+caffe: command line brew
+usage: caffe <command> <args>
+
+commands:
+  train           train or finetune a model
+  test            score a model
+  device_query    show GPU diagnostic information
+  time            benchmark model execution time
+
+  Flags from tools/caffe.cpp:
+    -gpu (Optional; run in GPU mode on given device IDs separated by ','.Use
+      '-gpu all' to run on all available GPUs. The effective training batch
+      size is multiplied by the number of devices.) type: string default: ""
+    -iterations (The number of iterations to run.) type: int32 default: 50
+    -model (The model definition protocol buffer text file..) type: string
+      default: ""
+    -sighup_effect (Optional; action to take when a SIGHUP signal is received:
+      snapshot, stop or none.) type: string default: "snapshot"
+    -sigint_effect (Optional; action to take when a SIGINT signal is received:
+      snapshot, stop or none.) type: string default: "stop"
+    -snapshot (Optional; the snapshot solver state to resume training.)
+      type: string default: ""
+    -solver (The solver definition protocol buffer text file.) type: string
+      default: ""
+    -weights (Optional; the pretrained weights to initialize finetuning,
+      separated by ','. Cannot be set simultaneously with snapshot.)
+      type: string default: ""
+.build_debug/test/test_all.testbin 0 --gtest_shuffle 
+Cuda number of devices: 16
+Setting to use device 0
+Current device id: 0
+Note: Randomizing tests' orders with a seed of 52055 .
+[==========] Running 100 tests from 12 test cases.
+[----------] Global test environment set-up.
+[----------] 12 tests from EltwiseLayerTest/2, where TypeParam = caffe::GPUDevice<float>
+[ RUN      ] EltwiseLayerTest/2.TestUnstableProdGradient
+[       OK ] EltwiseLayerTest/2.TestUnstableProdGradient (529 ms)
+[ RUN      ] EltwiseLayerTest/2.TestMaxGradient
+[       OK ] EltwiseLayerTest/2.TestMaxGradient (76 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSumCoeffGradient
+[       OK ] EltwiseLayerTest/2.TestSumCoeffGradient (86 ms)
+[ RUN      ] EltwiseLayerTest/2.TestProd
+[       OK ] EltwiseLayerTest/2.TestProd (1 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSumBlobCoeff
+[       OK ] EltwiseLayerTest/2.TestSumBlobCoeff (2 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSumCoeff
+[       OK ] EltwiseLayerTest/2.TestSumCoeff (2 ms)
+[ RUN      ] EltwiseLayerTest/2.TestMax
+[       OK ] EltwiseLayerTest/2.TestMax (1 ms)
+[ RUN      ] EltwiseLayerTest/2.TestStableProdGradient
+[       OK ] EltwiseLayerTest/2.TestStableProdGradient (78 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSum
+[       OK ] EltwiseLayerTest/2.TestSum (2 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSumGradient
+[       OK ] EltwiseLayerTest/2.TestSumGradient (86 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSetUp
+[       OK ] EltwiseLayerTest/2.TestSetUp (1 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSumBlobCoeffGradient
+[       OK ] EltwiseLayerTest/2.TestSumBlobCoeffGradient (5824 ms)
+[----------] 12 tests from EltwiseLayerTest/2 (6688 ms total)
+
+[----------] 8 tests from LSTMLayerTest/3, where TypeParam = caffe::GPUDevice<double>
+[ RUN      ] LSTMLayerTest/3.TestForward
+[       OK ] LSTMLayerTest/3.TestForward (22 ms)
+[ RUN      ] LSTMLayerTest/3.TestLSTMUnitSetUp
+[       OK ] LSTMLayerTest/3.TestLSTMUnitSetUp (2 ms)
+[ RUN      ] LSTMLayerTest/3.TestGradientNonZeroFlush
+[       OK ] LSTMLayerTest/3.TestGradientNonZeroFlush (2477 ms)
+[ RUN      ] LSTMLayerTest/3.TestSetUp
+[       OK ] LSTMLayerTest/3.TestSetUp (4 ms)
+[ RUN      ] LSTMLayerTest/3.TestGradient
+[       OK ] LSTMLayerTest/3.TestGradient (2310 ms)
+[ RUN      ] LSTMLayerTest/3.TestGradientNonZeroFlushBufferSize2
+[       OK ] LSTMLayerTest/3.TestGradientNonZeroFlushBufferSize2 (4689 ms)
+[ RUN      ] LSTMLayerTest/3.TestLSTMUnitGradient
+[       OK ] LSTMLayerTest/3.TestLSTMUnitGradient (446 ms)
+[ RUN      ] LSTMLayerTest/3.TestLSTMUnitGradientNonZeroFlush
+[       OK ] LSTMLayerTest/3.TestLSTMUnitGradientNonZeroFlush (447 ms)
+[----------] 8 tests from LSTMLayerTest/3 (10397 ms total)
+
+[----------] 8 tests from LSTMLayerTest/1, where TypeParam = caffe::CPUDevice<double>
+[ RUN      ] LSTMLayerTest/1.TestForward
+[       OK ] LSTMLayerTest/1.TestForward (6 ms)
+[ RUN      ] LSTMLayerTest/1.TestLSTMUnitGradient
+[       OK ] LSTMLayerTest/1.TestLSTMUnitGradient (80 ms)
+[ RUN      ] LSTMLayerTest/1.TestSetUp
+[       OK ] LSTMLayerTest/1.TestSetUp (2 ms)
+[ RUN      ] LSTMLayerTest/1.TestLSTMUnitGradientNonZeroFlush
+[       OK ] LSTMLayerTest/1.TestLSTMUnitGradientNonZeroFlush (80 ms)
+[ RUN      ] LSTMLayerTest/1.TestGradient
+[       OK ] LSTMLayerTest/1.TestGradient (373 ms)
+[ RUN      ] LSTMLayerTest/1.TestGradientNonZeroFlushBufferSize2
+[       OK ] LSTMLayerTest/1.TestGradientNonZeroFlushBufferSize2 (724 ms)
+[ RUN      ] LSTMLayerTest/1.TestGradientNonZeroFlush
+[       OK ] LSTMLayerTest/1.TestGradientNonZeroFlush (368 ms)
+[ RUN      ] LSTMLayerTest/1.TestLSTMUnitSetUp
+[       OK ] LSTMLayerTest/1.TestLSTMUnitSetUp (0 ms)
+[----------] 8 tests from LSTMLayerTest/1 (1633 ms total)
+
+[----------] 5 tests from RNNLayerTest/1, where TypeParam = caffe::CPUDevice<double>
+[ RUN      ] RNNLayerTest/1.TestGradient
+[       OK ] RNNLayerTest/1.TestGradient (132 ms)
+[ RUN      ] RNNLayerTest/1.TestGradientNonZeroFlush
+[       OK ] RNNLayerTest/1.TestGradientNonZeroFlush (135 ms)
+[ RUN      ] RNNLayerTest/1.TestGradientNonZeroFlushBufferSize2
+[       OK ] RNNLayerTest/1.TestGradientNonZeroFlushBufferSize2 (274 ms)
+[ RUN      ] RNNLayerTest/1.TestSetUp
+[       OK ] RNNLayerTest/1.TestSetUp (2 ms)
+[ RUN      ] RNNLayerTest/1.TestForward
+[       OK ] RNNLayerTest/1.TestForward (6 ms)
+[----------] 5 tests from RNNLayerTest/1 (549 ms total)
+
+[----------] 8 tests from LSTMLayerTest/2, where TypeParam = caffe::GPUDevice<float>
+[ RUN      ] LSTMLayerTest/2.TestLSTMUnitGradientNonZeroFlush
+[       OK ] LSTMLayerTest/2.TestLSTMUnitGradientNonZeroFlush (499 ms)
+[ RUN      ] LSTMLayerTest/2.TestGradientNonZeroFlush
+[       OK ] LSTMLayerTest/2.TestGradientNonZeroFlush (2526 ms)
+[ RUN      ] LSTMLayerTest/2.TestLSTMUnitSetUp
+[       OK ] LSTMLayerTest/2.TestLSTMUnitSetUp (2 ms)
+[ RUN      ] LSTMLayerTest/2.TestGradientNonZeroFlushBufferSize2
+[       OK ] LSTMLayerTest/2.TestGradientNonZeroFlushBufferSize2 (5083 ms)
+[ RUN      ] LSTMLayerTest/2.TestSetUp
+[       OK ] LSTMLayerTest/2.TestSetUp (3 ms)
+[ RUN      ] LSTMLayerTest/2.TestForward
+[       OK ] LSTMLayerTest/2.TestForward (12 ms)
+[ RUN      ] LSTMLayerTest/2.TestLSTMUnitGradient
+[       OK ] LSTMLayerTest/2.TestLSTMUnitGradient (457 ms)
+[ RUN      ] LSTMLayerTest/2.TestGradient
+[       OK ] LSTMLayerTest/2.TestGradient (2484 ms)
+[----------] 8 tests from LSTMLayerTest/2 (11067 ms total)
+
+[----------] 5 tests from RNNLayerTest/2, where TypeParam = caffe::GPUDevice<float>
+[ RUN      ] RNNLayerTest/2.TestForward
+[       OK ] RNNLayerTest/2.TestForward (12 ms)
+[ RUN      ] RNNLayerTest/2.TestGradientNonZeroFlush
+[       OK ] RNNLayerTest/2.TestGradientNonZeroFlush (1185 ms)
+[ RUN      ] RNNLayerTest/2.TestGradient
+[       OK ] RNNLayerTest/2.TestGradient (1184 ms)
+[ RUN      ] RNNLayerTest/2.TestSetUp
+[       OK ] RNNLayerTest/2.TestSetUp (3 ms)
+[ RUN      ] RNNLayerTest/2.TestGradientNonZeroFlushBufferSize2
+[       OK ] RNNLayerTest/2.TestGradientNonZeroFlushBufferSize2 (2650 ms)
+[----------] 5 tests from RNNLayerTest/2 (5034 ms total)
+
+[----------] 5 tests from RNNLayerTest/3, where TypeParam = caffe::GPUDevice<double>
+[ RUN      ] RNNLayerTest/3.TestForward
+[       OK ] RNNLayerTest/3.TestForward (12 ms)
+[ RUN      ] RNNLayerTest/3.TestGradient
+[       OK ] RNNLayerTest/3.TestGradient (1069 ms)
+[ RUN      ] RNNLayerTest/3.TestGradientNonZeroFlush
+[       OK ] RNNLayerTest/3.TestGradientNonZeroFlush (1078 ms)
+[ RUN      ] RNNLayerTest/3.TestSetUp
+[       OK ] RNNLayerTest/3.TestSetUp (4 ms)
+[ RUN      ] RNNLayerTest/3.TestGradientNonZeroFlushBufferSize2
+[       OK ] RNNLayerTest/3.TestGradientNonZeroFlushBufferSize2 (2355 ms)
+[----------] 5 tests from RNNLayerTest/3 (4518 ms total)
+
+[----------] 12 tests from EltwiseLayerTest/1, where TypeParam = caffe::CPUDevice<double>
+[ RUN      ] EltwiseLayerTest/1.TestProd
+[       OK ] EltwiseLayerTest/1.TestProd (1 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSumCoeffGradient
+[       OK ] EltwiseLayerTest/1.TestSumCoeffGradient (8 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSetUp
+[       OK ] EltwiseLayerTest/1.TestSetUp (0 ms)
+[ RUN      ] EltwiseLayerTest/1.TestStableProdGradient
+[       OK ] EltwiseLayerTest/1.TestStableProdGradient (8 ms)
+[ RUN      ] EltwiseLayerTest/1.TestMaxGradient
+[       OK ] EltwiseLayerTest/1.TestMaxGradient (9 ms)
+[ RUN      ] EltwiseLayerTest/1.TestMax
+[       OK ] EltwiseLayerTest/1.TestMax (0 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSumGradient
+[       OK ] EltwiseLayerTest/1.TestSumGradient (8 ms)
+[ RUN      ] EltwiseLayerTest/1.TestUnstableProdGradient
+[       OK ] EltwiseLayerTest/1.TestUnstableProdGradient (9 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSumCoeff
+[       OK ] EltwiseLayerTest/1.TestSumCoeff (0 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSumBlobCoeff
+[       OK ] EltwiseLayerTest/1.TestSumBlobCoeff (0 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSumBlobCoeffGradient
+[       OK ] EltwiseLayerTest/1.TestSumBlobCoeffGradient (502 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSum
+[       OK ] EltwiseLayerTest/1.TestSum (0 ms)
+[----------] 12 tests from EltwiseLayerTest/1 (545 ms total)
+
+[----------] 12 tests from EltwiseLayerTest/0, where TypeParam = caffe::CPUDevice<float>
+[ RUN      ] EltwiseLayerTest/0.TestSum
+[       OK ] EltwiseLayerTest/0.TestSum (0 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSumBlobCoeffGradient
+[       OK ] EltwiseLayerTest/0.TestSumBlobCoeffGradient (483 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSumCoeffGradient
+[       OK ] EltwiseLayerTest/0.TestSumCoeffGradient (8 ms)
+[ RUN      ] EltwiseLayerTest/0.TestUnstableProdGradient
+[       OK ] EltwiseLayerTest/0.TestUnstableProdGradient (9 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSetUp
+[       OK ] EltwiseLayerTest/0.TestSetUp (0 ms)
+[ RUN      ] EltwiseLayerTest/0.TestProd
+[       OK ] EltwiseLayerTest/0.TestProd (0 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSumGradient
+[       OK ] EltwiseLayerTest/0.TestSumGradient (8 ms)
+[ RUN      ] EltwiseLayerTest/0.TestMaxGradient
+[       OK ] EltwiseLayerTest/0.TestMaxGradient (9 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSumBlobCoeff
+[       OK ] EltwiseLayerTest/0.TestSumBlobCoeff (0 ms)
+[ RUN      ] EltwiseLayerTest/0.TestStableProdGradient
+[       OK ] EltwiseLayerTest/0.TestStableProdGradient (8 ms)
+[ RUN      ] EltwiseLayerTest/0.TestMax
+[       OK ] EltwiseLayerTest/0.TestMax (0 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSumCoeff
+[       OK ] EltwiseLayerTest/0.TestSumCoeff (1 ms)
+[----------] 12 tests from EltwiseLayerTest/0 (526 ms total)
+
+[----------] 8 tests from LSTMLayerTest/0, where TypeParam = caffe::CPUDevice<float>
+[ RUN      ] LSTMLayerTest/0.TestGradientNonZeroFlush
+[       OK ] LSTMLayerTest/0.TestGradientNonZeroFlush (378 ms)
+[ RUN      ] LSTMLayerTest/0.TestForward
+[       OK ] LSTMLayerTest/0.TestForward (6 ms)
+[ RUN      ] LSTMLayerTest/0.TestSetUp
+[       OK ] LSTMLayerTest/0.TestSetUp (2 ms)
+[ RUN      ] LSTMLayerTest/0.TestGradient
+[       OK ] LSTMLayerTest/0.TestGradient (376 ms)
+[ RUN      ] LSTMLayerTest/0.TestLSTMUnitGradientNonZeroFlush
+[       OK ] LSTMLayerTest/0.TestLSTMUnitGradientNonZeroFlush (80 ms)
+[ RUN      ] LSTMLayerTest/0.TestGradientNonZeroFlushBufferSize2
+[       OK ] LSTMLayerTest/0.TestGradientNonZeroFlushBufferSize2 (713 ms)
+[ RUN      ] LSTMLayerTest/0.TestLSTMUnitSetUp
+[       OK ] LSTMLayerTest/0.TestLSTMUnitSetUp (0 ms)
+[ RUN      ] LSTMLayerTest/0.TestLSTMUnitGradient
+[       OK ] LSTMLayerTest/0.TestLSTMUnitGradient (81 ms)
+[----------] 8 tests from LSTMLayerTest/0 (1636 ms total)
+
+[----------] 12 tests from EltwiseLayerTest/3, where TypeParam = caffe::GPUDevice<double>
+[ RUN      ] EltwiseLayerTest/3.TestMax
+[       OK ] EltwiseLayerTest/3.TestMax (1 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSumCoeff
+[       OK ] EltwiseLayerTest/3.TestSumCoeff (2 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSumBlobCoeff
+[       OK ] EltwiseLayerTest/3.TestSumBlobCoeff (2 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSumGradient
+[       OK ] EltwiseLayerTest/3.TestSumGradient (75 ms)
+[ RUN      ] EltwiseLayerTest/3.TestProd
+[       OK ] EltwiseLayerTest/3.TestProd (1 ms)
+[ RUN      ] EltwiseLayerTest/3.TestUnstableProdGradient
+[       OK ] EltwiseLayerTest/3.TestUnstableProdGradient (67 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSumBlobCoeffGradient
+[       OK ] EltwiseLayerTest/3.TestSumBlobCoeffGradient (4766 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSetUp
+[       OK ] EltwiseLayerTest/3.TestSetUp (1 ms)
+[ RUN      ] EltwiseLayerTest/3.TestMaxGradient
+[       OK ] EltwiseLayerTest/3.TestMaxGradient (68 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSum
+[       OK ] EltwiseLayerTest/3.TestSum (1 ms)
+[ RUN      ] EltwiseLayerTest/3.TestStableProdGradient
+[       OK ] EltwiseLayerTest/3.TestStableProdGradient (68 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSumCoeffGradient
+[       OK ] EltwiseLayerTest/3.TestSumCoeffGradient (75 ms)
+[----------] 12 tests from EltwiseLayerTest/3 (5127 ms total)
+
+[----------] 5 tests from RNNLayerTest/0, where TypeParam = caffe::CPUDevice<float>
+[ RUN      ] RNNLayerTest/0.TestGradient
+[       OK ] RNNLayerTest/0.TestGradient (136 ms)
+[ RUN      ] RNNLayerTest/0.TestGradientNonZeroFlushBufferSize2
+[       OK ] RNNLayerTest/0.TestGradientNonZeroFlushBufferSize2 (269 ms)
+[ RUN      ] RNNLayerTest/0.TestForward
+[       OK ] RNNLayerTest/0.TestForward (6 ms)
+[ RUN      ] RNNLayerTest/0.TestSetUp
+[       OK ] RNNLayerTest/0.TestSetUp (1 ms)
+[ RUN      ] RNNLayerTest/0.TestGradientNonZeroFlush
+[       OK ] RNNLayerTest/0.TestGradientNonZeroFlush (135 ms)
+[----------] 5 tests from RNNLayerTest/0 (547 ms total)
+
+[----------] Global test environment tear-down
+[==========] 100 tests from 12 test cases ran. (48267 ms total)
+[  PASSED  ] 100 tests.

@@ -1,0 +1,2301 @@
+.build_debug/tools/caffe
+caffe: command line brew
+usage: caffe <command> <args>
+
+commands:
+  train           train or finetune a model
+  test            score a model
+  device_query    show GPU diagnostic information
+  time            benchmark model execution time
+
+  Flags from tools/caffe.cpp:
+    -gpu (Optional; run in GPU mode on given device IDs separated by ','.Use
+      '-gpu all' to run on all available GPUs. The effective training batch
+      size is multiplied by the number of devices.) type: string default: ""
+    -iterations (The number of iterations to run.) type: int32 default: 50
+    -model (The model definition protocol buffer text file..) type: string
+      default: ""
+    -sighup_effect (Optional; action to take when a SIGHUP signal is received:
+      snapshot, stop or none.) type: string default: "snapshot"
+    -sigint_effect (Optional; action to take when a SIGINT signal is received:
+      snapshot, stop or none.) type: string default: "stop"
+    -snapshot (Optional; the snapshot solver state to resume training.)
+      type: string default: ""
+    -solver (The solver definition protocol buffer text file.) type: string
+      default: ""
+    -weights (Optional; the pretrained weights to initialize finetuning,
+      separated by ','. Cannot be set simultaneously with snapshot.)
+      type: string default: ""
+.build_debug/test/test_all.testbin 0 --gtest_shuffle 
+Cuda number of devices: 16
+Setting to use device 0
+Current device id: 0
+Note: Randomizing tests' orders with a seed of 99624 .
+[==========] Running 100 tests from 12 test cases.
+[----------] Global test environment set-up.
+[----------] 5 tests from RNNLayerTest/2, where TypeParam = caffe::GPUDevice<float>
+[ RUN      ] RNNLayerTest/2.TestGradientNonZeroFlushBufferSize2
+[       OK ] RNNLayerTest/2.TestGradientNonZeroFlushBufferSize2 (3106 ms)
+[ RUN      ] RNNLayerTest/2.TestGradientNonZeroFlush
+[       OK ] RNNLayerTest/2.TestGradientNonZeroFlush (1035 ms)
+[ RUN      ] RNNLayerTest/2.TestSetUp
+[       OK ] RNNLayerTest/2.TestSetUp (4 ms)
+[ RUN      ] RNNLayerTest/2.TestForward
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.012106269598007202, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.26072260737419128,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.27282887697219849, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 0
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.230865478515625, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13758209347724915,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.36844757199287415, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 1
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.11049048602581024, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.33263087272644043,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.22214038670063019, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 2
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.30011995136737823, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.087010547518730164,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.3871304988861084, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 3
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.55674788355827332, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.26110938191413879,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.29563850164413452, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 4
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.34704653918743134, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.22814780473709106,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11889873445034027, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 5
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21535200625658035, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.041306309401988983,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.17404569685459137, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 6
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.0092734023928642273, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.12578365206718445,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11651024967432022, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 7
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12969838455319405, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.16611531376838684,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.036416929215192795, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 8
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.34531690180301666, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.07232607901096344,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.27299082279205322, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 9
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.13283663243055344, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.21922478079795837,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.086388148367404938, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 10
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.34676951169967651, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.16050197184085846,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.18626753985881805, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 11
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.24007080122828484, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.20029573142528534,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.039775069802999496, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 12
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.26586418598890305, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.078269802033901215,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.18759438395500183, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 13
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.2965206578373909, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.36289787292480469,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.066377215087413788, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 14
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.020227745175361633, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.22668090462684631,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.24690864980220795, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 15
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.28963295184075832, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.31361374258995056,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.023980790749192238, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 16
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.13862276077270508, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.16938129067420959,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.30800405144691467, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 17
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.07534082792699337, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.063939586281776428,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.011401241645216942, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 18
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.20095184445381165, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.1677304208278656,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.033221423625946045, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 19
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.25203956663608551, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.046527519822120667,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.29856708645820618, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 20
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.052926555275917053, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.26072260737419128,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.20779605209827423, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 0
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.1659797877073288, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13758209347724915,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.028397694230079651, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 1
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.006239086389541626, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.33263087272644043,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.33886995911598206, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 2
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.34125785529613495, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.087010547518730164,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.25424730777740479, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 3
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21175330877304077, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.26110938191413879,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.47286269068717957, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 4
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12036621570587158, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.22814780473709106,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.34851402044296265, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 5
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21274957805871964, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.041306309401988983,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.25405588746070862, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 6
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.0089958906173706055, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.12578365206718445,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11678776144981384, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 7
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.10299104452133179, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.16611531376838684,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.26910635828971863, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 8
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.35773439705371857, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.07232607901096344,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.28540831804275513, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 9
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.080594837665557861, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.21922478079795837,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.29981961846351624, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 10
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.24760725349187851, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.16050197184085846,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.08710528165102005, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 11
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.24532753974199295, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.20029573142528534,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.045031808316707611, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 12
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.037079975008964539, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.078269802033901215,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11534977704286575, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 13
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.14619272947311401, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.36289787292480469,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.21670514345169067, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 14
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.30353438854217529, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.22668090462684631,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.076853483915328979, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 15
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.40042641758918762, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.31361374258995056,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.086812674999237061, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 16
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.28285840153694153, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.16938129067420959,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11347711086273193, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 17
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21708782017230988, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.063939586281776428,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.2810274064540863, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 18
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.13565077260136604, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.1677304208278656,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.032079648226499557, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 19
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.20393851399421692, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.046527519822120667,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.15741099417209625, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 20
+[  FAILED  ] RNNLayerTest/2.TestForward, where TypeParam = caffe::GPUDevice<float> (16 ms)
+[ RUN      ] RNNLayerTest/2.TestGradient
+[       OK ] RNNLayerTest/2.TestGradient (1043 ms)
+[----------] 5 tests from RNNLayerTest/2 (5205 ms total)
+
+[----------] 12 tests from EltwiseLayerTest/0, where TypeParam = caffe::CPUDevice<float>
+[ RUN      ] EltwiseLayerTest/0.TestMax
+[       OK ] EltwiseLayerTest/0.TestMax (0 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSumCoeff
+[       OK ] EltwiseLayerTest/0.TestSumCoeff (0 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSumCoeffGradient
+[       OK ] EltwiseLayerTest/0.TestSumCoeffGradient (8 ms)
+[ RUN      ] EltwiseLayerTest/0.TestStableProdGradient
+[       OK ] EltwiseLayerTest/0.TestStableProdGradient (9 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSumGradient
+[       OK ] EltwiseLayerTest/0.TestSumGradient (7 ms)
+[ RUN      ] EltwiseLayerTest/0.TestUnstableProdGradient
+[       OK ] EltwiseLayerTest/0.TestUnstableProdGradient (9 ms)
+[ RUN      ] EltwiseLayerTest/0.TestMaxGradient
+[       OK ] EltwiseLayerTest/0.TestMaxGradient (13 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSetUp
+[       OK ] EltwiseLayerTest/0.TestSetUp (0 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSumBlobCoeffGradient
+[       OK ] EltwiseLayerTest/0.TestSumBlobCoeffGradient (496 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSum
+[       OK ] EltwiseLayerTest/0.TestSum (0 ms)
+[ RUN      ] EltwiseLayerTest/0.TestProd
+[       OK ] EltwiseLayerTest/0.TestProd (0 ms)
+[ RUN      ] EltwiseLayerTest/0.TestSumBlobCoeff
+[       OK ] EltwiseLayerTest/0.TestSumBlobCoeff (0 ms)
+[----------] 12 tests from EltwiseLayerTest/0 (543 ms total)
+
+[----------] 5 tests from RNNLayerTest/0, where TypeParam = caffe::CPUDevice<float>
+[ RUN      ] RNNLayerTest/0.TestSetUp
+[       OK ] RNNLayerTest/0.TestSetUp (1 ms)
+[ RUN      ] RNNLayerTest/0.TestGradientNonZeroFlushBufferSize2
+[       OK ] RNNLayerTest/0.TestGradientNonZeroFlushBufferSize2 (266 ms)
+[ RUN      ] RNNLayerTest/0.TestGradientNonZeroFlush
+[       OK ] RNNLayerTest/0.TestGradientNonZeroFlush (134 ms)
+[ RUN      ] RNNLayerTest/0.TestForward
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19532881304621696, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14341197907924652,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.051916833966970444, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 0
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12267971411347389, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.17131954431533813,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.048639830201864243, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 1
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19479743391275406, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.080861769616603851,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.27565920352935791, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 2
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.050950512290000916, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.21510268747806549,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.26605319976806641, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 3
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.027784526348114014, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.12945316731929779,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.10166864097118378, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 4
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12474087066948414, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.023008817806839943,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.1017320528626442, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 5
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.27266494929790497, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14669422805309296,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.12597072124481201, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 6
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.38053068518638611, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.31674379110336304,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.063786894083023071, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 7
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.096423469483852386, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.2136923223733902,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11726885288953781, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 8
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19707506708800793, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.015952529385685921,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.21302759647369385, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 9
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.016456514596939087, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.23856642842292786,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.25502294301986694, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 10
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.44714921712875366, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.23494549095630646,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.2122037261724472, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 11
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.11738748475909233, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.073820598423480988,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.043566886335611343, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 12
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.077907845377922058, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.15760058164596558,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.079692736268043518, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 13
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.34544245526194572, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.32269993424415588,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.022742521017789841, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 14
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.032546214759349823, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.085599198937416077,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.053052984178066254, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 15
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.18430842272937298, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.0071373116225004196,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.17717111110687256, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 16
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21667260676622391, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.10884568840265274,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.10782691836357117, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 17
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.10315121710300446, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.20026715099811554,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.30341836810112, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 18
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.090079985558986664, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.17236442863941193,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.082284443080425262, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 19
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.029508184641599655, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.015220247209072113,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.014287937432527542, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 20
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.18213988840579987, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14341197907924652,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.32555186748504639, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 0
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.014521896839141846, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.17131954431533813,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15679764747619629, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 1
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.081278063327772543, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.080861769616603851,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.00041629371116869152, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 2
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.43612723052501678, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.21510268747806549,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.22102454304695129, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 3
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.2355857640504837, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.12945316731929779,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.10613259673118591, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 4
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.059535125270485878, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.023008817806839943,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.036526307463645935, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 5
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.35054826736450195, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14669422805309296,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.203854039311409, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 6
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.020358502864837646, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.31674379110336304,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.33710229396820068, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 7
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.18410683609545231, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.2136923223733902,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.029585486277937889, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 8
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.14167605526745319, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.015952529385685921,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.12572352588176727, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 9
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.32169449329376221, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.23856642842292786,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.083128064870834351, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 10
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.41677244007587433, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.23494549095630646,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.18182694911956787, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 11
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19114033877849579, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.073820598423480988,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.1173197403550148, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 12
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12592159956693649, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.15760058164596558,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.031678982079029083, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 13
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12435141205787659, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.32269993424415588,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.44705134630203247, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 14
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.095014035701751709, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.085599198937416077,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.18061323463916779, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 15
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.2506019938737154, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.0071373116225004196,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.25773930549621582, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 16
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.22699780762195587, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.10884568840265274,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.11815211921930313, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 17
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.32375907897949219, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.20026715099811554,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.12349192798137665, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 18
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21732621639966965, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.17236442863941193,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.044961787760257721, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 19
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21739321202039719, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.015220247209072113,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.2326134592294693, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 20
+[  FAILED  ] RNNLayerTest/0.TestForward, where TypeParam = caffe::CPUDevice<float> (10 ms)
+[ RUN      ] RNNLayerTest/0.TestGradient
+[       OK ] RNNLayerTest/0.TestGradient (133 ms)
+[----------] 5 tests from RNNLayerTest/0 (544 ms total)
+
+[----------] 8 tests from LSTMLayerTest/3, where TypeParam = caffe::GPUDevice<double>
+[ RUN      ] LSTMLayerTest/3.TestLSTMUnitGradientNonZeroFlush
+[       OK ] LSTMLayerTest/3.TestLSTMUnitGradientNonZeroFlush (457 ms)
+[ RUN      ] LSTMLayerTest/3.TestGradientNonZeroFlush
+[       OK ] LSTMLayerTest/3.TestGradientNonZeroFlush (1741 ms)
+[ RUN      ] LSTMLayerTest/3.TestLSTMUnitGradient
+[       OK ] LSTMLayerTest/3.TestLSTMUnitGradient (453 ms)
+[ RUN      ] LSTMLayerTest/3.TestForward
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.082689673160959307, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.14490023149006784,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.062210558329108531, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 0
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.088334705433840977, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.27613407773993048,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.18779937230608951, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 1
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.053367710164477097, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.15035379446320105,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.096986084298723949, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 2
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.010991578192971196, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.19436697054650851,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.2053585487394797, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 3
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.068133974343485809, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13957753502812525,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.20771150937161106, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 4
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.042930951093120659, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.12687939129094306,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.083948440197822397, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 5
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.022669522826287952, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13977576194500774,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11710623911871978, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 6
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.17688679668969684, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.077183360962389494,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.099703435727307346, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 7
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.035494478603719903, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.0095829810006566006,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.045077459604376501, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 8
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.020069710356966364, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.135831399932416,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11576168957544963, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 9
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.072040789615661988, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.21093758008187433,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.28297836969753631, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 10
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.14134535204645715, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.022978140722570151,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.118367211323887, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 11
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.049174226494159659, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.01953254992151985,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.029641676572639806, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 12
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.16513806025627223, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.026703725144009611,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.19184178540028185, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 13
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.00046665249467354314, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.050789983375966401,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.050323330881292858, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 14
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.068900671609031391, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.07690167500183677,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.14580234661086816, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 15
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.14609857168098578, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.039222809426597782,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.106875762254388, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 16
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.191548196284058, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.075232051883727405,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.26678024816778539, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 17
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.082884688190113978, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.1080016248391535,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.19088631302926748, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 18
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.019236141142213031, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13514023792038515,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15437637906259818, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 19
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.088612103362643621, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.11950517728842749,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.030893073925783873, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 20
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.071552156958145277, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.14490023149006784,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.073348074531922561, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 0
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.39790734865844768, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.27613407773993048,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.12177327091851721, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 1
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.15746503212350321, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.15035379446320105,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.0071112376603021622, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 2
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.022218823002254723, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.19436697054650851,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.21658579354876323, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 3
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.02012590301117112, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13957753502812525,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15970343803929637, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 4
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.065564839270798758, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.12687939129094306,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.061314552020144297, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 5
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.035217916014311512, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13977576194500774,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.10455784593069622, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 6
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.061616487165787062, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.077183360962389494,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.015566873796602428, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 7
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.010421137765074156, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.0095829810006566006,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.00083815676441755492, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 8
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.065828152308825258, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.135831399932416,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.070003247623590739, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 9
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.10771785004654663, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.21093758008187433,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.31865543012842096, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 10
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.016814863338333923, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.022978140722570151,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.0061632773842362296, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 11
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.07114282496976862, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.01953254992151985,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.090675374891288477, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 12
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.2899734013806759, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.026703725144009611,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.31667712652468549, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 13
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.015843552132733481, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.050789983375966401,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.03494643124323292, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 14
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.094513776351618367, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.07690167500183677,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.017612101349781601, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 15
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19390027734645693, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.039222809426597782,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15467746791985915, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 16
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19465051768574387, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.075232051883727405,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.26988256956947126, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 17
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.090101207066836275, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.1080016248391535,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.017900417772317229, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 18
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.10579610405217224, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13514023792038515,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.029344133868212906, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 19
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.1073450463742065, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.11950517728842749,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.22685022366263399, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 20
+[  FAILED  ] LSTMLayerTest/3.TestForward, where TypeParam = caffe::GPUDevice<double> (22 ms)
+[ RUN      ] LSTMLayerTest/3.TestSetUp
+[       OK ] LSTMLayerTest/3.TestSetUp (5 ms)
+[ RUN      ] LSTMLayerTest/3.TestGradientNonZeroFlushBufferSize2
+[       OK ] LSTMLayerTest/3.TestGradientNonZeroFlushBufferSize2 (4806 ms)
+[ RUN      ] LSTMLayerTest/3.TestLSTMUnitSetUp
+[       OK ] LSTMLayerTest/3.TestLSTMUnitSetUp (2 ms)
+[ RUN      ] LSTMLayerTest/3.TestGradient
+[       OK ] LSTMLayerTest/3.TestGradient (1709 ms)
+[----------] 8 tests from LSTMLayerTest/3 (9195 ms total)
+
+[----------] 12 tests from EltwiseLayerTest/2, where TypeParam = caffe::GPUDevice<float>
+[ RUN      ] EltwiseLayerTest/2.TestProd
+[       OK ] EltwiseLayerTest/2.TestProd (2 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSumBlobCoeff
+[       OK ] EltwiseLayerTest/2.TestSumBlobCoeff (1 ms)
+[ RUN      ] EltwiseLayerTest/2.TestStableProdGradient
+[       OK ] EltwiseLayerTest/2.TestStableProdGradient (70 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSumBlobCoeffGradient
+[       OK ] EltwiseLayerTest/2.TestSumBlobCoeffGradient (4713 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSumCoeffGradient
+[       OK ] EltwiseLayerTest/2.TestSumCoeffGradient (76 ms)
+[ RUN      ] EltwiseLayerTest/2.TestMax
+[       OK ] EltwiseLayerTest/2.TestMax (2 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSumGradient
+[       OK ] EltwiseLayerTest/2.TestSumGradient (78 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSum
+[       OK ] EltwiseLayerTest/2.TestSum (1 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSumCoeff
+[       OK ] EltwiseLayerTest/2.TestSumCoeff (2 ms)
+[ RUN      ] EltwiseLayerTest/2.TestMaxGradient
+[       OK ] EltwiseLayerTest/2.TestMaxGradient (69 ms)
+[ RUN      ] EltwiseLayerTest/2.TestSetUp
+[       OK ] EltwiseLayerTest/2.TestSetUp (1 ms)
+[ RUN      ] EltwiseLayerTest/2.TestUnstableProdGradient
+[       OK ] EltwiseLayerTest/2.TestUnstableProdGradient (68 ms)
+[----------] 12 tests from EltwiseLayerTest/2 (5083 ms total)
+
+[----------] 12 tests from EltwiseLayerTest/3, where TypeParam = caffe::GPUDevice<double>
+[ RUN      ] EltwiseLayerTest/3.TestMax
+[       OK ] EltwiseLayerTest/3.TestMax (2 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSumBlobCoeff
+[       OK ] EltwiseLayerTest/3.TestSumBlobCoeff (2 ms)
+[ RUN      ] EltwiseLayerTest/3.TestUnstableProdGradient
+[       OK ] EltwiseLayerTest/3.TestUnstableProdGradient (68 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSumBlobCoeffGradient
+[       OK ] EltwiseLayerTest/3.TestSumBlobCoeffGradient (5503 ms)
+[ RUN      ] EltwiseLayerTest/3.TestStableProdGradient
+[       OK ] EltwiseLayerTest/3.TestStableProdGradient (79 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSumCoeff
+[       OK ] EltwiseLayerTest/3.TestSumCoeff (1 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSum
+[       OK ] EltwiseLayerTest/3.TestSum (2 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSumCoeffGradient
+[       OK ] EltwiseLayerTest/3.TestSumCoeffGradient (89 ms)
+[ RUN      ] EltwiseLayerTest/3.TestMaxGradient
+[       OK ] EltwiseLayerTest/3.TestMaxGradient (79 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSumGradient
+[       OK ] EltwiseLayerTest/3.TestSumGradient (89 ms)
+[ RUN      ] EltwiseLayerTest/3.TestSetUp
+[       OK ] EltwiseLayerTest/3.TestSetUp (2 ms)
+[ RUN      ] EltwiseLayerTest/3.TestProd
+[       OK ] EltwiseLayerTest/3.TestProd (1 ms)
+[----------] 12 tests from EltwiseLayerTest/3 (5917 ms total)
+
+[----------] 8 tests from LSTMLayerTest/0, where TypeParam = caffe::CPUDevice<float>
+[ RUN      ] LSTMLayerTest/0.TestGradient
+[       OK ] LSTMLayerTest/0.TestGradient (383 ms)
+[ RUN      ] LSTMLayerTest/0.TestLSTMUnitGradient
+[       OK ] LSTMLayerTest/0.TestLSTMUnitGradient (81 ms)
+[ RUN      ] LSTMLayerTest/0.TestForward
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.08268970251083374, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.14490023255348206,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.062210530042648315, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 0
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.088334709405899048, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.27613404393196106,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.18779933452606201, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 1
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.05336771160364151, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.15035377442836761,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.096986062824726105, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 2
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.010991647839546204, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.19436687231063843,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.20535852015018463, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 3
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.068133994936943054, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.1395774781703949,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.20771147310733795, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 4
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.042930938303470612, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.12687939405441284,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.08394845575094223, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 5
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.022669523954391479, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13977576792240143,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11710624396800995, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 6
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.17688677459955215, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.077183373272418976,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.099703401327133179, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 7
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.035494454205036163, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.0095830149948596954,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.045077469199895859, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 8
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.020069681107997894, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13583140075206757,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11576171964406967, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 9
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.072040766477584839, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.21093761920928955,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.28297838568687439, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 10
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.1413453221321106, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.022978134453296661,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11836718767881393, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 11
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.049174202606081963, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.019532548263669014,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.029641654342412949, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 12
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.16513816267251968, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.026703663170337677,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.19184182584285736, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 13
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.00046666339039802551, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.05078999325633049,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.050323329865932465, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 14
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.068900689482688904, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.076901674270629883,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.14580236375331879, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 15
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.14609856158494949, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.039222799241542816,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.10687576234340668, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 16
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19154824316501617, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.075232043862342834,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.26678028702735901, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 17
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.082884699106216431, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.10800161957740784,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.19088631868362427, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 18
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.019236162304878235, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13514025509357452,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15437641739845276, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 19
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.08861217088997364, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.11950516700744629,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.030892996117472649, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 20
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.071552172303199768, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.14490023255348206,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.073348060250282288, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 0
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.39790736883878708, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.27613404393196106,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.12177332490682602, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 1
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.15746502950787544, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.15035377442836761,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.0071112550795078278, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 2
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.022218897938728333, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.19436687231063843,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.21658577024936676, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 3
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.020125940442085266, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.1395774781703949,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15970341861248016, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 4
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.0655648373067379, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.12687939405441284,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.061314556747674942, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 5
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.035217933356761932, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13977576792240143,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.1045578345656395, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 6
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.061616474762558937, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.077183373272418976,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.015566898509860039, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 7
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.010421147628221661, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.0095830149948596954,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.00083813263336196542, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 8
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.065828144550323486, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13583140075206757,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.07000325620174408, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 9
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.10771778225898743, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.21093761920928955,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.31865540146827698, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 10
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.016814867500215769, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.022978134453296661,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.0061632669530808926, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 11
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.071142842993140221, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.019532548263669014,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.090675391256809235, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 12
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.2899734303355217, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.026703663170337677,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.31667709350585938, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 13
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.015843547880649567, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.05078999325633049,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.034946445375680923, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 14
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.094513759016990662, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.076901674270629883,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.017612084746360779, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 15
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19390026479959488, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.039222799241542816,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15467746555805206, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 16
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19465051591396332, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.075232043862342834,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.26988255977630615, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 17
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.09010118804872036, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.10800161957740784,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.017900431528687477, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 18
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.10579610802233219, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13514025509357452,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.029344147071242332, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 19
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.10734501481056213, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.11950516700744629,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.22685018181800842, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 20
+[  FAILED  ] LSTMLayerTest/0.TestForward, where TypeParam = caffe::CPUDevice<float> (9 ms)
+[ RUN      ] LSTMLayerTest/0.TestGradientNonZeroFlush
+[       OK ] LSTMLayerTest/0.TestGradientNonZeroFlush (389 ms)
+[ RUN      ] LSTMLayerTest/0.TestLSTMUnitSetUp
+[       OK ] LSTMLayerTest/0.TestLSTMUnitSetUp (0 ms)
+[ RUN      ] LSTMLayerTest/0.TestLSTMUnitGradientNonZeroFlush
+[       OK ] LSTMLayerTest/0.TestLSTMUnitGradientNonZeroFlush (81 ms)
+[ RUN      ] LSTMLayerTest/0.TestGradientNonZeroFlushBufferSize2
+[       OK ] LSTMLayerTest/0.TestGradientNonZeroFlushBufferSize2 (726 ms)
+[ RUN      ] LSTMLayerTest/0.TestSetUp
+[       OK ] LSTMLayerTest/0.TestSetUp (2 ms)
+[----------] 8 tests from LSTMLayerTest/0 (1671 ms total)
+
+[----------] 8 tests from LSTMLayerTest/1, where TypeParam = caffe::CPUDevice<double>
+[ RUN      ] LSTMLayerTest/1.TestLSTMUnitGradientNonZeroFlush
+[       OK ] LSTMLayerTest/1.TestLSTMUnitGradientNonZeroFlush (81 ms)
+[ RUN      ] LSTMLayerTest/1.TestGradient
+[       OK ] LSTMLayerTest/1.TestGradient (365 ms)
+[ RUN      ] LSTMLayerTest/1.TestGradientNonZeroFlush
+[       OK ] LSTMLayerTest/1.TestGradientNonZeroFlush (364 ms)
+[ RUN      ] LSTMLayerTest/1.TestGradientNonZeroFlushBufferSize2
+[       OK ] LSTMLayerTest/1.TestGradientNonZeroFlushBufferSize2 (700 ms)
+[ RUN      ] LSTMLayerTest/1.TestLSTMUnitSetUp
+[       OK ] LSTMLayerTest/1.TestLSTMUnitSetUp (0 ms)
+[ RUN      ] LSTMLayerTest/1.TestForward
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.062220300959928726, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.014324736490642854,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.047895564469285876, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 0
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.17382815064061585, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.20453072001417746,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.030702569373561622, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 1
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.02579703898124236, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.094598280279128366,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.12039531926037073, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 2
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.11948845756395111, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.026517896684582636,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.14600635424853375, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 3
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.10407133628073995, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.044051616110647784,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.060019720170092168, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 4
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.010500990404927347, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.033748519236833058,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.023247528831905711, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 5
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.0029972098372649525, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.098208017374526571,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.10120522721179152, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 6
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.035084774275424328, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.039567454690499389,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.074652228965923717, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 7
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.24695136439040005, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.29324683364297094,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.04629546925257088, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 8
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.065485630585383398, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.093500635343974792,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15898626592935819, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 9
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.089558866563294828, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.062911218081849948,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.02664764848144488, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 10
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.0025747934279601037, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.069795493240273607,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.07237028666823371, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 11
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.0033173967204341561, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.0079631635261292744,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.0046457668056951182, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 12
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.14892968833831979, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.006554750772693017,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15548443911101281, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 13
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.028170181541472526, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.05499384960501548,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.026823668063542954, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 14
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.0056278005919429275, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.17418065150306961,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.17980845209501253, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 15
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12710913651858768, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.15930848747637469,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.032199350957787004, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 16
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.1567118919301814, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14340661742010472,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.013305274510076669, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 17
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.034903666049461712, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.28650351198377733,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.25159984593431561, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 18
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.096809702400237951, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.1448183821469578,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.048008679746719851, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 19
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.055777351069878744, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.19164611856552149,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.13586876749564275, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 20
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.069132673152852681, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.014324736490642854,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.05480793666220983, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 0
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.032863724264561911, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.20453072001417746,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.17166699574961555, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 1
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.036584090601722519, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.094598280279128366,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.13118237088085088, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 2
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.085092495715843222, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.026517896684582636,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.11161039240042586, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 3
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.034421870888177282, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.044051616110647784,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.0096297452224705041, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 4
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.022568897614493474, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.033748519236833058,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.011179621622339582, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 5
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.11457710347238696, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.098208017374526571,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.21278512084691353, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 6
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21423314035468866, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.039567454690499389,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.25380059504518804, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 7
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.24779073718763198, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.29324683364297094,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.045456096455338969, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 8
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.0093029694283890546, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.093500635343974792,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.10280360477236385, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 9
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.17819475916218463, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.062911218081849948,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.1152835410803347, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 10
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.092338666066249367, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.069795493240273607,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.16213415930652297, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 11
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.11323349603062495, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.0079631635261292744,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.10527033250449568, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 12
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.089897405882877049, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.006554750772693017,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.08334265511018403, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 13
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.243478801777256, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.05499384960501548,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.18848495217224054, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 14
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12488019229918954, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.17418065150306961,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.04930045920388007, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 15
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.24401851428903451, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.15930848747637469,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.4033270017654092, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 16
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.18239464711696632, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14340661742010472,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.038988029696861597, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 17
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.093171265654442781, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.28650351198377733,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.19333224632933455, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 18
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.15923978571839731, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.1448183821469578,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.30405816786535511, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 19
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.43861067312436985, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.19164611856552149,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.24696455455884836, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 20
+[  FAILED  ] LSTMLayerTest/1.TestForward, where TypeParam = caffe::CPUDevice<double> (10 ms)
+[ RUN      ] LSTMLayerTest/1.TestSetUp
+[       OK ] LSTMLayerTest/1.TestSetUp (1 ms)
+[ RUN      ] LSTMLayerTest/1.TestLSTMUnitGradient
+[       OK ] LSTMLayerTest/1.TestLSTMUnitGradient (80 ms)
+[----------] 8 tests from LSTMLayerTest/1 (1601 ms total)
+
+[----------] 8 tests from LSTMLayerTest/2, where TypeParam = caffe::GPUDevice<float>
+[ RUN      ] LSTMLayerTest/2.TestGradientNonZeroFlush
+[       OK ] LSTMLayerTest/2.TestGradientNonZeroFlush (1961 ms)
+[ RUN      ] LSTMLayerTest/2.TestSetUp
+[       OK ] LSTMLayerTest/2.TestSetUp (5 ms)
+[ RUN      ] LSTMLayerTest/2.TestLSTMUnitGradient
+[       OK ] LSTMLayerTest/2.TestLSTMUnitGradient (501 ms)
+[ RUN      ] LSTMLayerTest/2.TestGradient
+[       OK ] LSTMLayerTest/2.TestGradient (2065 ms)
+[ RUN      ] LSTMLayerTest/2.TestForward
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.082689709961414337, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.14490027725696564,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.0622105672955513, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 0
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.08833467960357666, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.27613401412963867,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.18779933452606201, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 1
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.053367689251899719, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.15035374462604523,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.096986055374145508, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 2
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.010991662740707397, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.19436685740947723,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.20535852015018463, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 3
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.068134024739265442, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.1395774632692337,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.20771148800849915, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 4
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.042930930852890015, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.12687939405441284,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.083948463201522827, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 5
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.022669531404972076, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13977578282356262,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11710625141859055, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 6
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.17688673734664917, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.077183358371257782,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.099703378975391388, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 7
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.035494423471391201, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.009583023376762867,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.045077446848154068, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 8
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.020069748163223267, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13583144545555115,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11576169729232788, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 9
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.07204081118106842, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.21093760430812836,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.28297841548919678, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 10
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.14134527184069157, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.022978136315941811,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11836713552474976, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 11
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.04917423240840435, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.019532542675733566,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.029641689732670784, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 12
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.16513813659548759, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.026703629642724991,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.19184176623821259, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 13
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.00046660751104354858, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.050789970904588699,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.050323363393545151, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 14
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.068900711834430695, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.076901666820049286,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.14580237865447998, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 15
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.14609859511256218, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.039222810417413712,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.10687578469514847, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 16
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19154820591211319, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.075232081115245819,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.26678028702735901, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 17
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.082884632050991058, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.10800167173147202,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.19088630378246307, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 18
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.019236132502555847, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13514022529125214,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15437635779380798, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 19
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.088612174615263939, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.11950516700744629,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.03089299239218235, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 1; i = 20
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.071552194654941559, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.14490027725696564,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.073348082602024078, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 0
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.39790733158588409, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.27613401412963867,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.12177331745624542, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 1
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.15746498294174671, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.15035374462604523,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.0071112383157014847, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 2
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.022218942642211914, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.19436685740947723,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.21658580005168915, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 3
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.02012595534324646, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.1395774632692337,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15970341861248016, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 4
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.065564867109060287, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.12687939405441284,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.061314526945352554, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 5
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.035217948257923126, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13977578282356262,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.1045578345656395, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 6
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.061616442166268826, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.077183358371257782,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.015566916204988956, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 7
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.010421166603919119, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.009583023376762867,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.00083814322715625167, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 8
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.065828174352645874, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13583144545555115,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.070003271102905273, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 9
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.10771782696247101, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.21093760430812836,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.31865543127059937, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 10
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.016814837697893381, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.022978136315941811,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.0061632986180484295, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 11
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.071142856031656265, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.019532542675733566,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.090675398707389832, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 12
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.28997352346777916, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.026703629642724991,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.31667715311050415, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 13
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.015843503177165985, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.050789970904588699,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.034946467727422714, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 14
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.094513801857829094, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.076901666820049286,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.017612135037779808, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 15
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19390027597546577, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.039222810417413712,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15467746555805206, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 16
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19465053826570511, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.075232081115245819,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.26988261938095093, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 17
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.090101229026913643, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.10800167173147202,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.017900442704558372, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 18
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.10579606704413891, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.13514022529125214,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.029344158247113228, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 19
+src/caffe/test/test_lstm_layer.cpp:152: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.10734502971172333, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.11950516700744629,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.22685019671916962, and
+kEpsilon evaluates to 9.9999997473787516e-06.
+t = 2; i = 20
+[  FAILED  ] LSTMLayerTest/2.TestForward, where TypeParam = caffe::GPUDevice<float> (16 ms)
+[ RUN      ] LSTMLayerTest/2.TestGradientNonZeroFlushBufferSize2
+[       OK ] LSTMLayerTest/2.TestGradientNonZeroFlushBufferSize2 (5225 ms)
+[ RUN      ] LSTMLayerTest/2.TestLSTMUnitGradientNonZeroFlush
+[       OK ] LSTMLayerTest/2.TestLSTMUnitGradientNonZeroFlush (458 ms)
+[ RUN      ] LSTMLayerTest/2.TestLSTMUnitSetUp
+[       OK ] LSTMLayerTest/2.TestLSTMUnitSetUp (1 ms)
+[----------] 8 tests from LSTMLayerTest/2 (10232 ms total)
+
+[----------] 12 tests from EltwiseLayerTest/1, where TypeParam = caffe::CPUDevice<double>
+[ RUN      ] EltwiseLayerTest/1.TestSetUp
+[       OK ] EltwiseLayerTest/1.TestSetUp (0 ms)
+[ RUN      ] EltwiseLayerTest/1.TestUnstableProdGradient
+[       OK ] EltwiseLayerTest/1.TestUnstableProdGradient (9 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSumCoeffGradient
+[       OK ] EltwiseLayerTest/1.TestSumCoeffGradient (8 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSumBlobCoeffGradient
+[       OK ] EltwiseLayerTest/1.TestSumBlobCoeffGradient (502 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSumBlobCoeff
+[       OK ] EltwiseLayerTest/1.TestSumBlobCoeff (1 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSumCoeff
+[       OK ] EltwiseLayerTest/1.TestSumCoeff (0 ms)
+[ RUN      ] EltwiseLayerTest/1.TestProd
+[       OK ] EltwiseLayerTest/1.TestProd (0 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSumGradient
+[       OK ] EltwiseLayerTest/1.TestSumGradient (8 ms)
+[ RUN      ] EltwiseLayerTest/1.TestMax
+[       OK ] EltwiseLayerTest/1.TestMax (0 ms)
+[ RUN      ] EltwiseLayerTest/1.TestStableProdGradient
+[       OK ] EltwiseLayerTest/1.TestStableProdGradient (8 ms)
+[ RUN      ] EltwiseLayerTest/1.TestSum
+[       OK ] EltwiseLayerTest/1.TestSum (0 ms)
+[ RUN      ] EltwiseLayerTest/1.TestMaxGradient
+[       OK ] EltwiseLayerTest/1.TestMaxGradient (9 ms)
+[----------] 12 tests from EltwiseLayerTest/1 (545 ms total)
+
+[----------] 5 tests from RNNLayerTest/3, where TypeParam = caffe::GPUDevice<double>
+[ RUN      ] RNNLayerTest/3.TestSetUp
+[       OK ] RNNLayerTest/3.TestSetUp (4 ms)
+[ RUN      ] RNNLayerTest/3.TestGradientNonZeroFlush
+[       OK ] RNNLayerTest/3.TestGradientNonZeroFlush (927 ms)
+[ RUN      ] RNNLayerTest/3.TestGradient
+[       OK ] RNNLayerTest/3.TestGradient (926 ms)
+[ RUN      ] RNNLayerTest/3.TestForward
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19532895827952418, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14341206943640183,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.05191688884312233, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 0
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12267978732849241, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.17131955344972805,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.048639766121235641, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 1
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19479740362167469, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.08086179717111297,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.27565920079278766, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 2
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.050950361923495807, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.2151027335138542,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.26605309543735001, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 3
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.027784474334504636, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.12945318241554063,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.10166870808103599, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 4
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.1247408311439135, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.023008831700130284,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.10173199944378322, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 5
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.2726650019354071, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14669420492428456,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.12597079701112254, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 6
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.38053062226024242, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.31674378389060798,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.06378683836963446, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 7
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.096423469792333155, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.21369233531297191,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11726886552063875, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 8
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19707495727378965, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.015952557578762565,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.21302751485255222, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 9
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.016456586992446537, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.23856642983407764,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.25502301682652417, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 10
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.44714920157625637, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.23494550509608372,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.21220369648017268, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 11
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.11738738371650871, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.073820565592334422,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.043566818124174289, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 12
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.07790776471911294, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.15760056528644065,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.079692800567327707, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 13
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.34544244672473712, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.32269996436062265,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.022742482364114486, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 14
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.032546303070390158, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.085599279655561675,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.053052976585171517, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 15
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.18430840151202491, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.0071373408856167655,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.17717106062640814, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 16
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21667257886067809, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.1088456123755417,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.10782696648513637, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 17
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.10315132791833109, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.20026712385514589,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.30341845177347698, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 18
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.090079946425078064, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.17236440263258129,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.082284456207503229, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 19
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.029508178810955861, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.015220307852385106,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.014287870958570753, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 20
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.18213982950119151, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14341206943640183,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.32555189893759334, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 0
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.014521843966828069, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.17131955344972805,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15679770948289998, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 1
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.081278130567896983, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.08086179717111297,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.00041633339678401099, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 2
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.43612723798004949, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.2151027335138542,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.22102450446619529, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 3
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.23558578701145277, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.12945318241554063,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.10613260459591214, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 4
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.059535176706193765, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.023008831700130284,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.036526345006063485, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 5
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.35054820185787455, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14669420492428456,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.20385399693358999, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 6
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.020358582992663798, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.31674378389060798,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.33710236688327178, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 7
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.18410683233798414, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.21369233531297191,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.029585502974987757, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 8
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.14167615734063232, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.015952557578762565,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.12572359976186975, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 9
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.32169448140345425, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.23856642983407764,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.083128051569376624, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 10
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.41677250646985481, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.23494550509608372,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.18182700137377109, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 11
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19114032722916696, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.073820565592334422,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.11731976163683254, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 12
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12592150572855595, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.15760056528644065,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.031679059557884699, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 13
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12435141894417356, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.32269996436062265,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.44705138330479621, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 14
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.095014053292346676, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.085599279655561675,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.18061333294790835, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 15
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.25060195968819904, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.0071373408856167655,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.25773930057381578, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 16
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.22699789692747727, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.1088456123755417,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.11815228455193556, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 17
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.32375913189171424, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.20026712385514589,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.12349200803656833, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 18
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21732622027654619, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.17236440263258129,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.044961817643964883, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 19
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21739330743050309, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.015220307852385106,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.23261361528288818, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 20
+[  FAILED  ] RNNLayerTest/3.TestForward, where TypeParam = caffe::GPUDevice<double> (16 ms)
+[ RUN      ] RNNLayerTest/3.TestGradientNonZeroFlushBufferSize2
+[       OK ] RNNLayerTest/3.TestGradientNonZeroFlushBufferSize2 (2421 ms)
+[----------] 5 tests from RNNLayerTest/3 (4294 ms total)
+
+[----------] 5 tests from RNNLayerTest/1, where TypeParam = caffe::CPUDevice<double>
+[ RUN      ] RNNLayerTest/1.TestGradientNonZeroFlushBufferSize2
+[       OK ] RNNLayerTest/1.TestGradientNonZeroFlushBufferSize2 (264 ms)
+[ RUN      ] RNNLayerTest/1.TestGradient
+[       OK ] RNNLayerTest/1.TestGradient (129 ms)
+[ RUN      ] RNNLayerTest/1.TestGradientNonZeroFlush
+[       OK ] RNNLayerTest/1.TestGradientNonZeroFlush (129 ms)
+[ RUN      ] RNNLayerTest/1.TestForward
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19532895827952423, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14341206943640183,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.051916888843122393, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 0
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12267978732849241, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.17131955344972802,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.048639766121235606, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 1
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19479740362167475, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.080861797171112984,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.27565920079278772, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 2
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.050950361923495724, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.21510273351385423,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.26605309543734995, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 3
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.027784474334504664, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.12945318241554063,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.10166870808103597, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 4
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12474083114391353, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.023008831700130308,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.10173199944378322, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 5
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.27266500193540716, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14669420492428459,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.12597079701112257, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 6
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.38053062226024231, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.31674378389060792,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.063786838369634405, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 7
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.096423469792333127, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.21369233531297191,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.11726886552063878, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 8
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19707495727378971, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.015952557578762509,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.21302751485255222, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 9
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.016456586992446426, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.23856642983407764,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.25502301682652406, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 10
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.44714920157625648, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.23494550509608375,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.21220369648017273, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 11
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.11738738371650868, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.073820565592334422,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.043566818124174261, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 12
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.077907764719112912, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.15760056528644062,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.079692800567327707, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 13
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.34544244672473712, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.32269996436062265,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.022742482364114486, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 14
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.032546303070390178, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.085599279655561702,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.053052976585171524, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 15
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.18430840151202493, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.0071373408856167655,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.17717106062640817, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 16
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21667257886067809, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.10884561237554169,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.1078269664851364, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 17
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.1031513279183312, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.20026712385514583,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.30341845177347704, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 18
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.090079946425078064, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.17236440263258129,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.082284456207503229, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 19
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.029508178810955799, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.015220307852385099,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.014287870958570698, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 1; i = 20
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.18213982950119145, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14341206943640183,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.32555189893759329, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 0
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.014521843966828041, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.17131955344972802,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.15679770948289998, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 1
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.081278130567896983, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.080861797171112984,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.00041633339678399711, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 2
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.43612723798004949, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.21510273351385423,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.22102450446619523, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 3
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.23558578701145283, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.12945318241554063,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.1061326045959122, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 4
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.0595351767061938, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.023008831700130308,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.036526345006063492, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 5
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.35054820185787455, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.14669420492428459,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.20385399693358996, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 6
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.020358582992663798, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.31674378389060792,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.33710236688327172, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 7
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.18410683233798414, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.21369233531297191,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.029585502974987767, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 8
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.14167615734063227, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.015952557578762509,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.12572359976186975, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 9
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.32169448140345425, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.23856642983407764,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.08312805156937661, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 10
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.41677250646985481, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.23494550509608375,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.18182700137377106, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 11
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.19114032722916696, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.073820565592334422,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.11731976163683253, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 12
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12592150572855587, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.15760056528644062,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.031679059557884741, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 13
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.12435141894417356, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.32269996436062265,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.44705138330479621, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 14
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.095014053292346592, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.085599279655561702,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.18061333294790829, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 15
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.25060195968819898, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.0071373408856167655,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.25773930057381572, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 16
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.22699789692747724, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.10884561237554169,
+top_copy.cpu_data()[t * top_count + i] evaluates to 0.11815228455193556, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 17
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.32375913189171412, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.20026712385514583,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.12349200803656828, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 18
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21732622027654619, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to 0.17236440263258129,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.044961817643964883, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 19
+src/caffe/test/test_rnn_layer.cpp:129: Failure
+The difference between this->blob_top_.cpu_data()[i] and top_copy.cpu_data()[t * top_count + i] is 0.21739330743050303, which exceeds kEpsilon, where
+this->blob_top_.cpu_data()[i] evaluates to -0.015220307852385099,
+top_copy.cpu_data()[t * top_count + i] evaluates to -0.23261361528288813, and
+kEpsilon evaluates to 1.0000000000000001e-05.
+t = 2; i = 20
+[  FAILED  ] RNNLayerTest/1.TestForward, where TypeParam = caffe::CPUDevice<double> (9 ms)
+[ RUN      ] RNNLayerTest/1.TestSetUp
+[       OK ] RNNLayerTest/1.TestSetUp (1 ms)
+[----------] 5 tests from RNNLayerTest/1 (532 ms total)
+
+[----------] Global test environment tear-down
+[==========] 100 tests from 12 test cases ran. (45362 ms total)
+[  PASSED  ] 92 tests.
+[  FAILED  ] 8 tests, listed below:
+[  FAILED  ] RNNLayerTest/0.TestForward, where TypeParam = caffe::CPUDevice<float>
+[  FAILED  ] RNNLayerTest/1.TestForward, where TypeParam = caffe::CPUDevice<double>
+[  FAILED  ] RNNLayerTest/2.TestForward, where TypeParam = caffe::GPUDevice<float>
+[  FAILED  ] RNNLayerTest/3.TestForward, where TypeParam = caffe::GPUDevice<double>
+[  FAILED  ] LSTMLayerTest/0.TestForward, where TypeParam = caffe::CPUDevice<float>
+[  FAILED  ] LSTMLayerTest/1.TestForward, where TypeParam = caffe::CPUDevice<double>
+[  FAILED  ] LSTMLayerTest/2.TestForward, where TypeParam = caffe::GPUDevice<float>
+[  FAILED  ] LSTMLayerTest/3.TestForward, where TypeParam = caffe::GPUDevice<double>
+
+ 8 FAILED TESTS
