@@ -1,29 +1,53 @@
 name: "lstm_joints"
 layer {
   name: "data"
-  type: "Python"
+  type: "ImageData"
   top: "data"
   top: "label"
   top: "clip_markers"
-  python_param {
-    module: "sequence_input_layer"
-    layer: "videoReadTrain_RGB"
+  include {
+    phase: TRAIN
   }
-  include: { phase: TRAIN }
+  transform_param {
+    mirror: true
+    crop_size: 227
+    mean_value: 103.939
+    mean_value: 116.779
+    mean_value: 128.68
+  }
+  image_data_param {
+    source: "ucf101_split1_trainVideos.txt"
+    batch_size: 32 #16*2
+    new_height: 240
+    new_width: 320
+    root_folder: "/work1/t2g-shinoda2011/15M54105/newTest/lisa-caffe-public/examples/LRCN_activity_recognition/frames/"
+  }
 }
-
 layer {
   name: "data"
-  type: "Python"
+  type: "ImageData"
   top: "data"
   top: "label"
   top: "clip_markers"
-  python_param {
-    module: "sequence_input_layer"
-    layer: "videoReadTest_RGB"
+  include {
+    phase: TEST  stage: "test-on-test" 
   }
-  include: { phase: TEST stage: "test-on-test" }
+  transform_param {
+    mirror: false
+    crop_size: 227
+    mean_value: 103.939
+    mean_value: 116.779
+    mean_value: 128.68
+  }
+  image_data_param {
+    source: "ucf101_split1_testVideos.txt"
+    batch_size: 48 #16*3
+    new_height: 240
+    new_width: 320
+    root_folder: "/work1/t2g-shinoda2011/15M54105/newTest/lisa-caffe-public/examples/LRCN_activity_recognition/frames/"
+  }
 }
+
 layer {
   name: "conv1"
   type: "Convolution"
@@ -295,7 +319,7 @@ layer{
   reshape_param{
     shape{
       dim: 16
-      dim: 24
+      dim: 2
       dim: 4096
     }
   }
@@ -323,7 +347,7 @@ layer{
   reshape_param{
     shape{
       dim: 16
-      dim: 24
+      dim: 2
     }
   }
   include: { phase: TRAIN }
@@ -349,7 +373,7 @@ layer{
   reshape_param{
     shape{
       dim: 16
-      dim: 24
+      dim: 2
     }
   }
   include: { phase: TRAIN }

@@ -36,6 +36,9 @@ DataTransformer<Dtype>::DataTransformer(const TransformationParameter& param,
       mean_values_.push_back(param_.mean_value(c));
     }
   }
+
+  former_h_off=0;
+  former_w_off=0;
 }
 
 template<typename Dtype>
@@ -224,7 +227,7 @@ void DataTransformer<Dtype>::Transform(const vector<cv::Mat> & mat_vector,
 
 template<typename Dtype>
 void DataTransformer<Dtype>::Transform(const cv::Mat& cv_img,
-                                       Blob<Dtype>* transformed_blob) {
+                                       Blob<Dtype>* transformed_blob,bool changeCrop) {
   const int crop_size = param_.crop_size();
   const int img_channels = cv_img.channels();
   const int img_height = cv_img.rows;
@@ -277,10 +280,16 @@ void DataTransformer<Dtype>::Transform(const cv::Mat& cv_img,
     CHECK_EQ(crop_size, height);
     CHECK_EQ(crop_size, width);
     // We only do random crop when we do training.
-    if (phase_ == TRAIN) {
+    //LOG(INFO) <<changeCrop << ":" << former_h_off<<","<<former_w_off;
+    if ((phase_ == TRAIN) && changeCrop) {
       h_off = Rand(img_height - crop_size + 1);
       w_off = Rand(img_width - crop_size + 1);
-    } else {
+      former_h_off = h_off;
+      former_w_off = w_off;
+    } else if((phase_ == TRAIN) && !changeCrop){      
+      h_off = former_h_off;
+      w_off = former_w_off;
+    } else if(phase_ == TEST) {
       h_off = (img_height - crop_size) / 2;
       w_off = (img_width - crop_size) / 2;
     }
@@ -292,7 +301,6 @@ void DataTransformer<Dtype>::Transform(const cv::Mat& cv_img,
   }
 
   CHECK(cv_cropped_img.data);
-
   Dtype* transformed_data = transformed_blob->mutable_cpu_data();
   int top_index;
   for (int h = 0; h < height; ++h) {

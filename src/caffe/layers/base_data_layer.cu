@@ -20,10 +20,26 @@ void BasePrefetchingDataLayer<Dtype>::Forward_gpu(
     caffe_copy(batch->label_.count(), batch->label_.gpu_data(),
         top[1]->mutable_gpu_data());
   }
+  if (this->output_clip_markers_) {
+    top[2]->ReshapeLike(batch->clip_markers_);
+    caffe_copy(batch->clip_markers_.count(), batch->clip_markers_.gpu_data(),
+        top[2]->mutable_gpu_data());
+  }
   // Ensure the copy is synchronous wrt the host, so that the next batch isn't
   // copied in meanwhile.
   CUDA_CHECK(cudaStreamSynchronize(cudaStreamDefault));
   prefetch_free_.push(batch);
+
+
+  /*LOG(INFO) << top.size();
+  for(int i=1;i<top.size();++i){
+    LOG(INFO) << "top data " << i;
+    const Dtype *top_cpu_data = top[i]->cpu_data();
+    
+    for(int j=0;j<top[i]->count();++j){
+       LOG(INFO) << top_cpu_data[j];
+    }
+  }*/
 }
 
 INSTANTIATE_LAYER_GPU_FORWARD(BasePrefetchingDataLayer);

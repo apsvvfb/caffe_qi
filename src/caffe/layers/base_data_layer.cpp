@@ -22,8 +22,13 @@ void BaseDataLayer<Dtype>::LayerSetUp(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top) {
   if (top.size() == 1) {
     output_labels_ = false;
-  } else {
+    output_clip_markers_ = false;
+  } else if(top.size() == 2) {
     output_labels_ = true;
+    output_clip_markers_ = false;
+  } else if(top.size() == 3){
+    output_labels_ = true;
+    output_clip_markers_ = true;
   }
   data_transformer_.reset(
       new DataTransformer<Dtype>(transform_param_, this->phase_));
@@ -55,6 +60,9 @@ void BasePrefetchingDataLayer<Dtype>::LayerSetUp(
     if (this->output_labels_) {
       prefetch_[i].label_.mutable_cpu_data();
     }
+    if (this->output_clip_markers_) {
+      prefetch_[i].clip_markers_.mutable_cpu_data();
+    }
   }
 #ifndef CPU_ONLY
   if (Caffe::mode() == Caffe::GPU) {
@@ -63,6 +71,9 @@ void BasePrefetchingDataLayer<Dtype>::LayerSetUp(
       if (this->output_labels_) {
         prefetch_[i].label_.mutable_gpu_data();
       }
+      if (this->output_clip_markers_) {
+        prefetch_[i].clip_markers_.mutable_gpu_data();
+      }  
     }
   }
 #endif
@@ -120,8 +131,23 @@ void BasePrefetchingDataLayer<Dtype>::Forward_cpu(
     caffe_copy(batch->label_.count(), batch->label_.cpu_data(),
         top[1]->mutable_cpu_data());
   }
+  if (this->output_clip_markers_) {
+    top[2]->ReshapeLike(batch->clip_markers_);
+    caffe_copy(batch->clip_markers_.count(), batch->clip_markers_.cpu_data(),
+        top[2]->mutable_cpu_data());
+  }
 
   prefetch_free_.push(batch);
+
+  /*LOG(INFO) << top.size();
+  for(int i=1;i<top.size();++i){
+    LOG(INFO) << "top data " << i;
+    const Dtype *top_cpu_data = top[i]->cpu_data();
+    
+    for(int j=0;j<top[i]->count();++j){
+       LOG(INFO) << top_cpu_data[j];
+    }
+  }*/
 }
 
 #ifdef CPU_ONLY
