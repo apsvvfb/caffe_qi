@@ -17,7 +17,7 @@ layer {
   }
   image_data_param {
     source: "ucf101_split1_trainVideos.txt"
-    batch_size: 32 #16*2
+    batch_size: 96 #16*6
     new_height: 240
     new_width: 320
     root_folder: "/work1/t2g-shinoda2011/15M54105/newTest/lisa-caffe-public/examples/LRCN_activity_recognition/frames/"
@@ -319,7 +319,7 @@ layer{
   reshape_param{
     shape{
       dim: 16
-      dim: 2
+      dim: 6
       dim: 4096
     }
   }
@@ -347,7 +347,7 @@ layer{
   reshape_param{
     shape{
       dim: 16
-      dim: 2
+      dim: 6
     }
   }
   include: { phase: TRAIN }
@@ -373,7 +373,7 @@ layer{
   reshape_param{
     shape{
       dim: 16
-      dim: 2
+      dim: 6
     }
   }
   include: { phase: TRAIN }

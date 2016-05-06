@@ -27,7 +27,7 @@ if(UNIX)
                    OUTPUT_VARIABLE __out RESULT_VARIABLE __res)
 
    if(__res MATCHES 0) # Suppress `readlink` warning if `which` returned nothing
-     execute_process(COMMAND which matlab  COMMAND xargs readlink
+     execute_process(COMMAND which matlab  COMMAND xargs readlink -f
                      COMMAND xargs dirname COMMAND xargs dirname COMMAND xargs echo -n
                      OUTPUT_VARIABLE __matlab_root OUTPUT_STRIP_TRAILING_WHITESPACE)
    endif()

@@ -19,112 +19,133 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/contrib/contrib.hpp>
 
+#include <glob.h>
+#include <vector>
 
 namespace caffe {
 
-void returnImageList(string ImagePath, vector<string>& fileNames)
-{
-	cv::Directory dir;
-	fileNames = dir.GetListFiles(ImagePath, "*", false);
+std::vector<string> globVector(const string& pattern){
+    glob_t glob_result;
+    glob(pattern.c_str(),GLOB_TILDE,NULL,&glob_result);
+    std::vector<string> files;
+    for(unsigned int i=0;i<glob_result.gl_pathc;++i){
+        files.push_back(string(glob_result.gl_pathv[i]));
+    }
+    globfree(&glob_result);
+    return files;
 }
 
 string fileparts(string filename)
 {
-    int idx0 = filename.find_first_of("/");
-    string a = filename.substr(idx0+1,filename.length()-1);
-    return a;
+	int idx0 = filename.find_first_of("/");
+	string a = filename.substr(idx0+1,filename.length()-1);
+	return a;
 }
 
 template <typename Dtype>
 ImageDataLayer<Dtype>::~ImageDataLayer<Dtype>() {
-  this->StopInternalThread();
+	this->StopInternalThread();
 }
 
 template <typename Dtype>
 void ImageDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>& bottom,
-      const vector<Blob<Dtype>*>& top) {
-  const int new_height = this->layer_param_.image_data_param().new_height();
-  const int new_width  = this->layer_param_.image_data_param().new_width();
-  const bool is_color  = this->layer_param_.image_data_param().is_color();
-  string root_folder = this->layer_param_.image_data_param().root_folder();
-  const int batch_size = this->layer_param_.image_data_param().batch_size();
+		const vector<Blob<Dtype>*>& top) {
+	const int new_height = this->layer_param_.image_data_param().new_height();
+	const int new_width  = this->layer_param_.image_data_param().new_width();
+	const bool is_color  = this->layer_param_.image_data_param().is_color();
+	string root_folder = this->layer_param_.image_data_param().root_folder();
+	const int batch_size = this->layer_param_.image_data_param().batch_size();
 
-  CHECK((new_height == 0 && new_width == 0) ||
-      (new_height > 0 && new_width > 0)) << "Current implementation requires "
-      "new_height and new_width to be set at the same time.";
-  // Read the file with filenames and labels
-  const string& source = this->layer_param_.image_data_param().source();
-  LOG(INFO) << "Opening file " << source;
-  std::ifstream infile(source.c_str());
-  string filename;
-  int label;
-  while (infile >> filename >> label) {
-    lines_.push_back(std::make_pair(filename, label));
-  }
+	CHECK((new_height == 0 && new_width == 0) ||
+			(new_height > 0 && new_width > 0)) << "Current implementation requires "
+					"new_height and new_width to be set at the same time.";
+	// Read the file with filenames and labels
+	const string& source = this->layer_param_.image_data_param().source();
+	LOG(INFO) << "Opening file " << source;
+	std::ifstream infile(source.c_str());
+	string filename;
+	int label;
+	while (infile >> filename >> label) {
+		lines_.push_back(std::make_pair(filename, label));
+	}
 
-  if (this->layer_param_.image_data_param().shuffle()) {
-    // randomly shuffle data
-    LOG(INFO) << "Shuffling data";
-    const unsigned int prefetch_rng_seed = caffe_rng_rand();
-    prefetch_rng_.reset(new Caffe::RNG(prefetch_rng_seed));
-    ShuffleImages();
-  }
-  LOG(INFO) << "A total of " << lines_.size() << " images.";
+	if (this->layer_param_.image_data_param().shuffle()) {
+		// randomly shuffle data
+		LOG(INFO) << "Shuffling data";
+		//const unsigned int prefetch_rng_seed = caffe_rng_rand();
+		//prefetch_rng_.reset(new Caffe::RNG(prefetch_rng_seed));
+		ShuffleImages();
+	}
 
-  lines_id_ = 0;
-  // Check if we would need to randomly skip a few data points
-  if (this->layer_param_.image_data_param().rand_skip()) {
-    unsigned int skip = caffe_rng_rand() %
-        this->layer_param_.image_data_param().rand_skip();
-    LOG(INFO) << "Skipping first " << skip << " data points.";
-    CHECK_GT(lines_.size(), skip) << "Not enough points to skip";
-    lines_id_ = skip;
-  }
+	const unsigned int prefetch_rng_seed = caffe_rng_rand();
+	prefetch_rng_.reset(new Caffe::RNG(prefetch_rng_seed));
 
-  string imagePath=root_folder + "/" + lines_[lines_id_].first;
-  vector<string> fileNames;
-  if (this->output_clip_markers_){
-     imagePath=root_folder + "/" + fileparts(lines_[lines_id_].first);     
-     returnImageList(imagePath, fileNames);
-     imagePath=imagePath + "/"+ fileNames[0];
+	LOG(INFO) << "A total of " << lines_.size() << " images.";
 
-     vector<int> clipmarkers_shape(1, batch_size);
-     top[2]->Reshape(clipmarkers_shape);
-     for (int i = 0; i < this->PREFETCH_COUNT; ++i) {
-       this->prefetch_[i].clip_markers_.Reshape(clipmarkers_shape);
-     }
-  }
-  // Read an image, and use it to initialize the top blob.
-  cv::Mat cv_img = ReadImageToCVMat(imagePath,
-                                    new_height, new_width, is_color);
-  CHECK(cv_img.data) << "Could not load " << imagePath;
-  // Use data_transformer to infer the expected blob shape from a cv_image.
-  vector<int> top_shape = this->data_transformer_->InferBlobShape(cv_img);
-  this->transformed_data_.Reshape(top_shape);
-  // Reshape prefetch_data and top[0] according to the batch_size.  
-  CHECK_GT(batch_size, 0) << "Positive batch size required";
-  top_shape[0] = batch_size;
-  for (int i = 0; i < this->PREFETCH_COUNT; ++i) {
-    this->prefetch_[i].data_.Reshape(top_shape);
-  }
-  top[0]->Reshape(top_shape);
+	lines_id_ = 0;
+	// Check if we would need to randomly skip a few data points
+	if (this->layer_param_.image_data_param().rand_skip()) {
+		unsigned int skip = caffe_rng_rand() %
+				this->layer_param_.image_data_param().rand_skip();
+		LOG(INFO) << "Skipping first " << skip << " data points.";
+		CHECK_GT(lines_.size(), skip) << "Not enough points to skip";
+		lines_id_ = skip;
+	}
 
-  LOG(INFO) << "output data size: " << top[0]->num() << ","
-      << top[0]->channels() << "," << top[0]->height() << ","
-      << top[0]->width();
-  // label
-  vector<int> label_shape(1, batch_size);
-  top[1]->Reshape(label_shape);
-  for (int i = 0; i < this->PREFETCH_COUNT; ++i) {
-    this->prefetch_[i].label_.Reshape(label_shape);
-  }
+	string imagePath=root_folder + "/" + lines_[lines_id_].first;
+	vector<string> fileNames;
+	if (this->output_clip_markers_){
+		imagePath=root_folder + "/" + fileparts(lines_[lines_id_].first)+"/*.jpg";
+		fileNames= globVector(imagePath);	
+		imagePath=fileNames[0];//imagePath + "/"+ fileNames[0];
+
+		vector<int> clipmarkers_shape(1, batch_size);
+		top[2]->Reshape(clipmarkers_shape);
+		for (int i = 0; i < this->PREFETCH_COUNT; ++i) {
+			this->prefetch_[i].clip_markers_.Reshape(clipmarkers_shape);
+		}
+	}
+	// Read an image, and use it to initialize the top blob.
+	cv::Mat cv_img = ReadImageToCVMat(imagePath,
+			new_height, new_width, is_color);
+	CHECK(cv_img.data) << "Could not load " << imagePath;
+	// Use data_transformer to infer the expected blob shape from a cv_image.
+	vector<int> top_shape = this->data_transformer_->InferBlobShape(cv_img);
+	this->transformed_data_.Reshape(top_shape);
+	// Reshape prefetch_data and top[0] according to the batch_size.
+	CHECK_GT(batch_size, 0) << "Positive batch size required";
+	top_shape[0] = batch_size;
+	for (int i = 0; i < this->PREFETCH_COUNT; ++i) {
+		this->prefetch_[i].data_.Reshape(top_shape);
+	}
+	top[0]->Reshape(top_shape);
+
+	LOG(INFO) << "output data size: " << top[0]->num() << ","
+			<< top[0]->channels() << "," << top[0]->height() << ","
+			<< top[0]->width();
+	// label
+	vector<int> label_shape(1, batch_size);
+	top[1]->Reshape(label_shape);
+	for (int i = 0; i < this->PREFETCH_COUNT; ++i) {
+		this->prefetch_[i].label_.Reshape(label_shape);
+	}
 }
+
 
 template <typename Dtype>
 void ImageDataLayer<Dtype>::ShuffleImages() {
+	caffe::rng_t* prefetch_rng =
+			static_cast<caffe::rng_t*>(prefetch_rng_->generator());
+	shuffle(lines_.begin(), lines_.end(), prefetch_rng);
+}
+
+template <typename Dtype>
+int ImageDataLayer<Dtype>::Rand(int n) {
+  CHECK(prefetch_rng_);
+  CHECK_GT(n, 0);
   caffe::rng_t* prefetch_rng =
       static_cast<caffe::rng_t*>(prefetch_rng_->generator());
-  shuffle(lines_.begin(), lines_.end(), prefetch_rng);
+  return ((*prefetch_rng)() % n);
 }
 
 // This function is called on prefetch thread
@@ -134,6 +155,8 @@ void ImageDataLayer<Dtype>::load_batch(Batch<Dtype>* batch) {
 	batch_timer.Start();
 	double read_time = 0;
 	double trans_time = 0;
+	double dir_time=0;
+	double idx_time=0;
 	CPUTimer timer;
 	CHECK(batch->data_.count());
 	CHECK(this->transformed_data_.count());
@@ -143,7 +166,7 @@ void ImageDataLayer<Dtype>::load_batch(Batch<Dtype>* batch) {
 	const int new_width = image_data_param.new_width();
 	const bool is_color = image_data_param.is_color();
 	string root_folder = image_data_param.root_folder();
-        
+
 
 	// Reshape according to the first image of each batch
 	// on single input batches allows for inputs of varying dimension.
@@ -152,9 +175,9 @@ void ImageDataLayer<Dtype>::load_batch(Batch<Dtype>* batch) {
 	int tbuffer;
 	if (this->output_clip_markers_){
 		tbuffer = batch_size / 16;
-		imagePath=root_folder + "/" + fileparts(lines_[lines_id_].first);   
-		returnImageList(imagePath, fileNames);
-		imagePath=imagePath + "/"+fileNames[0];
+		imagePath=root_folder + "/" + fileparts(lines_[lines_id_].first)+"/*.jpg";
+		fileNames=globVector(imagePath);//returnImageList(imagePath, fileNames);
+		imagePath=fileNames[0];//imagePath + "/"+fileNames[0];
 	}
 	// Read an image, and use it to initialize the top blob.
 	cv::Mat cv_img = ReadImageToCVMat(imagePath,
@@ -177,17 +200,27 @@ void ImageDataLayer<Dtype>::load_batch(Batch<Dtype>* batch) {
 		for (int item_id = 0; item_id < tbuffer; ++item_id) {
 			// get a blob
 			CHECK_GT(lines_size, lines_id_);
-			imagePath=root_folder + "/" + fileparts(lines_[lines_id_].first);   
-			returnImageList(imagePath, fileNames);
 
-			int randID = (rand() % (fileNames.size()-16+1)); 
-                        string imagePath1;
+			timer.Start();
+			imagePath=root_folder + "/" + fileparts(lines_[lines_id_].first)+"/*.jpg";
+			//returnImageList(imagePath, fileNames);
+			fileNames=globVector(imagePath);
+			dir_time += timer.MicroSeconds();
+
+			int randID = Rand(fileNames.size()-16+1);//(rand() % (fileNames.size()-16+1));
+			DLOG(INFO) << imagePath<<"totalnum"<<fileNames.size()<<"-randID:"<<randID;
+			string imagePath1;
 			for(int image_id=randID;image_id<16+randID;++image_id){
-				imagePath1=imagePath+ "/"+fileNames[image_id];
+				timer.Start();
+				imagePath1=fileNames[image_id];//imagePath+ "/"+fileNames[image_id];
 				cv::Mat cv_img = ReadImageToCVMat(imagePath1,
 						new_height, new_width, is_color);
+				read_time += timer.MicroSeconds();
+
 				CHECK(cv_img.data) << "Could not load " << imagePath1;
 				//LOG(INFO) << "ImagePath1" << imagePath1<<new_height<<new_width;
+
+				timer.Start();
 				/* suppose tbuffer=4
 				 *  /  0  1  2  3   4   5   6  ... 16
 				 * 0/  0  4  8  12  16  20  24 ... 64
@@ -206,7 +239,8 @@ void ImageDataLayer<Dtype>::load_batch(Batch<Dtype>* batch) {
 					prefetch_clip_markers[imgPosition] = 0;
 				}else{
 					this->data_transformer_->Transform(cv_img, &(this->transformed_data_),false);
-					prefetch_clip_markers[imgPosition] = 1;}				
+					prefetch_clip_markers[imgPosition] = 1;}
+				idx_time += timer.MicroSeconds();
 			}
 			// go to the next iter
 			lines_id_++;
@@ -216,6 +250,11 @@ void ImageDataLayer<Dtype>::load_batch(Batch<Dtype>* batch) {
 				lines_id_ = 0;
 			}
 		}
+		batch_timer.Stop();
+		DLOG(INFO) << "Prefetch  batch: " << batch_timer.MilliSeconds() << " ms.";
+		DLOG(INFO) << "Directory time: " << dir_time / 1000 << " ms.";
+                DLOG(INFO) << "     Read time: " << read_time / 1000 << " ms.";
+		DLOG(INFO) << "ChangeIdx time: " << idx_time / 1000 << " ms.";
 	}else{
 		for (int item_id = 0; item_id < batch_size; ++item_id) {
 			// get a blob
@@ -255,3 +294,4 @@ REGISTER_LAYER_CLASS(ImageData);
 
 }  // namespace caffe
 #endif  // USE_OPENCV
+

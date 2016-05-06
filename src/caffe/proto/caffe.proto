@@ -450,7 +450,7 @@ message LossParameter {
     // Do not normalize the loss.
     NONE = 3;
   }
-  optional NormalizationMode normalization = 3 [default = NONE];
+  optional NormalizationMode normalization = 3;
   // Deprecated.  Ignored if normalization is specified.  If normalization
   // is not specified, then setting this to false will be equivalent to
   // normalization = BATCH_SIZE to be consistent with previous behavior.

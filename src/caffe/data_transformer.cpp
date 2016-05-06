@@ -293,6 +293,7 @@ void DataTransformer<Dtype>::Transform(const cv::Mat& cv_img,
       h_off = (img_height - crop_size) / 2;
       w_off = (img_width - crop_size) / 2;
     }
+    DLOG(INFO)<<h_off<<","<<w_off;
     cv::Rect roi(w_off, h_off, crop_size, crop_size);
     cv_cropped_img = cv_img(roi);
   } else {

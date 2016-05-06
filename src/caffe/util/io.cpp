@@ -19,6 +19,9 @@
 #include "caffe/proto/caffe.pb.h"
 #include "caffe/util/io.hpp"
 
+#include "caffe/util/benchmark.hpp"
+#include "caffe/util/math_functions.hpp"
+
 const int kProtoReadBytesLimit = INT_MAX;  // Max size of 2 GB minus 1 byte.
 
 namespace caffe {
@@ -72,19 +75,38 @@ void WriteProtoToBinaryFile(const Message& proto, const char* filename) {
 #ifdef USE_OPENCV
 cv::Mat ReadImageToCVMat(const string& filename,
     const int height, const int width, const bool is_color) {
+  //CPUTimer timer;
+  //double read_time,resize_time;
   cv::Mat cv_img;
+
+  //timer.Start();
   int cv_read_flag = (is_color ? CV_LOAD_IMAGE_COLOR :
     CV_LOAD_IMAGE_GRAYSCALE);
   cv::Mat cv_img_origin = cv::imread(filename, cv_read_flag);
+  //read_time=timer.MicroSeconds();
+  /*LOG(INFO)<<"Read one image:"<<read_time/1000<<"ms";
+
+  timer.Start();
+  cv_read_flag = (is_color ? CV_LOAD_IMAGE_COLOR :
+    CV_LOAD_IMAGE_GRAYSCALE);
+  cv_img_origin = cv::imread(filename, cv_read_flag);
+  read_time=timer.MicroSeconds();
+  LOG(INFO)<<"Read one image:"<<read_time/1000<<"ms";*/
+
   if (!cv_img_origin.data) {
     LOG(ERROR) << "Could not open or find file " << filename;
     return cv_img_origin;
   }
+
+  //timer.Start();
   if (height > 0 && width > 0) {
     cv::resize(cv_img_origin, cv_img, cv::Size(width, height));
   } else {
     cv_img = cv_img_origin;
   }
+  //resize_time=timer.MicroSeconds();
+  //LOG(INFO)<<"Resize one image:"<<resize_time/1000<<"ms";
+
   return cv_img;
 }
 
